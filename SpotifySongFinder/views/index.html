@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Spotify Song Finder</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Song Finder</h1>
+        <form id="searchForm">
+            <input class="search-field" type="text" name="query" placeholder="Enter a song or artist" required>
+            <button class="search-btn" type="submit">Search</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <script>
+        const form = document.getElementById('searchForm');
+        const resultsDiv = document.getElementById('results');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // it prevents page refresh
+            resultsDiv.innerHTML = 'Loading...';
+            // it fetches form data
+            const formData = new FormData(form);
+            const response = await fetch('/search', {
+                method: 'POST',
+                body: new URLSearchParams(formData),
+            });
+            //then i parse JSON response
+            const tracks = await response.json();
+            // ну и динамично вывел результат rendered
+            resultsDiv.innerHTML = tracks
+                .map(track => `
+                    <div class="track">
+                        <img src="${track.album.images[0].url}" alt="${track.album.name}">
+                        <p><strong>${track.name}</strong></p>
+                        <p>Artist: ${track.artists.map(a => a.name).join(', ')}</p>
+                        <p>Album: ${track.album.name}</p>
+                        <a class="ref-spot" href="${track.external_urls.spotify}" target="_blank">Listen on Spotify</a>
+                    </div>
+                `).join('');
+        });
+    </script>
+</body>
+</html>
