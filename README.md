@@ -1,9 +1,9 @@
 
-# 🎵 Spotify Song Finder
+# Spotify Song Finder
 
 A web application that uses the Spotify Web API to search for songs based on user queries. Built with Node.js, Express, and `spotify-web-api-node`.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 SpotifySongFinder/
@@ -14,7 +14,7 @@ SpotifySongFinder/
 └── views/                 # HTML views (e.g., index.html)
 ```
 
-## 🚀 Installation
+## Installation
 
 1. **Clone the repository:**  
    ```bash
@@ -41,20 +41,20 @@ SpotifySongFinder/
 
    The server will run at: `http://localhost:3000`
 
-## 📜 Scripts
+## Scripts
 - `npm start` - Starts the server  
 - `npm test` - Runs tests (if implemented)  
 
-## 📚 Dependencies
+## Dependencies
 - `body-parser` - Parses incoming request bodies  
 - `dotenv` - Manages environment variables  
 - `express` - Web framework for Node.js  
 - `spotify-web-api-node` - Client for Spotify Web API  
 
-## 📈 Features
-- ✅ Search for songs using the Spotify API  
-- ✅ Display search results on the webpage  
-- ✅ Simple and clean UI with real-time results  
+## Features
+- Search for songs using the Spotify API  
+- Display search results on the webpage  
+- Simple and clean UI with real-time results  
 
 ## 🛡 Security Considerations
 - **Store sensitive information in `.env`** (e.g., Spotify API keys)  
